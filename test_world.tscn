@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b567jf4vr1whv"]
+
+[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://uniaxial_platform.tscn" id="1_dxppu"]
+[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://biaxial_platform.tscn" id="2_gy3sr"]
+[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://ball.tscn" id="3_1lwx6"]
+
+[node name="test_world" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9967265, 0.045794077, 0.06662761, -0.063828945, 0.95153004, 0.30085963, -0.049620584, -0.30412754, 0.9513382, 0.45247746, 5.3842053, 9.427402)
+
+[node name="Ball" parent="." instance=ExtResource("3_1lwx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.630741, 4, -5.6505127)
+
+[node name="BiaxialPlatform" parent="." instance=ExtResource("2_gy3sr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+
+[node name="UniaxialPlatform" parent="." instance=ExtResource("1_dxppu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)

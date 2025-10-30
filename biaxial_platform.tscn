@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhw5cbdm1ce6"]
+
+[ext_resource type="Script" uid="uid://cvas5kuyruk0e" path="res://biaxial_platform.gd" id="1_2gcsk"]
+[ext_resource type="ArrayMesh" uid="uid://csnkg67m3yoco" path="res://TestPlatform.obj" id="2_2uxts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gcsk"]
+size = Vector3(10, 2, 6)
+
+[node name="BiaxialPlatform" type="AnimatableBody3D"]
+script = ExtResource("1_2gcsk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_2uxts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2gcsk")
