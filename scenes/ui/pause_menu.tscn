@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="PauseMenu" type="Control"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer"]
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer"]
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer"]
