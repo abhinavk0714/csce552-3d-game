@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="SettingsMenu" type="Control"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer"]
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CanvasLayer"]
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer"]
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]

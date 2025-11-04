@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="MainMenu" type="Control"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer"]
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]

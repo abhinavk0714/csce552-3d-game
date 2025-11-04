@@ -1,5 +1,9 @@
 extends AnimatableBody3D
 
+# SpringBehavior component
+# Applies directional impulse to player ball when contact is detected
+# Can be angled to control launch direction and force
+
 @export var launch_force: float = 10.0 # This is wonky -> feel free to play around with the exact value
 
 func _ready():

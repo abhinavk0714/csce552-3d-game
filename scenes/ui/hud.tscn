@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="TimerLabel" type="Label" parent="."]
+
+[node name="BugsLabel" type="Label" parent="."]
+
+[node name="LivesLabel" type="Label" parent="."]
+
+[node name="LevelLabel" type="Label" parent="."]

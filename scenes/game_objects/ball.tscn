@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://38yglc2vup1v"]
 
-[ext_resource type="ArrayMesh" uid="uid://c4y53o88rmem6" path="res://Ball.obj" id="1_x8fbi"]
+[ext_resource type="ArrayMesh" path="res://assets/models/Ball.obj" id="1_x8fbi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
 radius = 1.0

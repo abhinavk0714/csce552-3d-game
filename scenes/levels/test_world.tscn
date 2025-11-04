@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b567jf4vr1whv"]
 
-[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://uniaxial_platform.tscn" id="1_dxppu"]
-[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://biaxial_platform.tscn" id="2_gy3sr"]
-[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://ball.tscn" id="3_1lwx6"]
-[ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://spring.tscn" id="4_dsnr4"]
-[ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://static_platform.tscn" id="4_lf0gk"]
+[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="1_dxppu"]
+[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="2_gy3sr"]
+[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="3_1lwx6"]
+[ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="4_dsnr4"]
+[ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="4_lf0gk"]
 
 [node name="test_world" type="Node3D"]
 
