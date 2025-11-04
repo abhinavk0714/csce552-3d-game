@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2rxu3qyjw74x"]
+
+[ext_resource type="Script" uid="uid://bl4wk14am37t" path="res://spring.gd" id="1_boyml"]
+[ext_resource type="ArrayMesh" uid="uid://4ek2ytp88nti" path="res://TempSpring.obj" id="1_ka4py"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_boyml"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ka4py"]
+size = Vector3(2, 1, 2)
+
+[node name="Spring" type="AnimatableBody3D"]
+script = ExtResource("1_boyml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ka4py")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_boyml")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52323854, 0)
+shape = SubResource("BoxShape3D_ka4py")
