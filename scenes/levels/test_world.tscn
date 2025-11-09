@@ -1,21 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b567jf4vr1whv"]
+[gd_scene load_steps=8 format=3 uid="uid://b567jf4vr1whv"]
 
 [ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="1_dxppu"]
 [ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="2_gy3sr"]
 [ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="3_1lwx6"]
+[ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="3_a8c4q"]
+[ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="4_d4tmt"]
 [ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="4_dsnr4"]
 [ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="4_lf0gk"]
 
 [node name="test_world" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, -1.1134114, 7.0328975, 7.713152)
 
 [node name="Ball" parent="." instance=ExtResource("3_1lwx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.630741, 4, -5.6505127)
 
 [node name="BiaxialPlatform" parent="." instance=ExtResource("2_gy3sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+
+[node name="Button" parent="BiaxialPlatform" instance=ExtResource("3_a8c4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8867936, 0.97375154, 0.3095932)
+
+[node name="Barrier" parent="." instance=ExtResource("4_d4tmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.486841, 0, -6.8413835)
 
 [node name="StaticPlatform" parent="." instance=ExtResource("4_lf0gk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
@@ -25,3 +30,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2591686, 1, -1.9870877)
 
 [node name="UniaxialPlatform" parent="." instance=ExtResource("1_dxppu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+
+[node name="Spring" parent="UniaxialPlatform" instance=ExtResource("4_dsnr4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5874138, 1.25, 0.5970993)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5188628, 0.8548575, 0, -0.8548575, 0.5188628, 0, 9.366883, 0)

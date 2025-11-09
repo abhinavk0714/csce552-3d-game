@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://cgyphep1ib6pb"]
 
 [ext_resource type="Script" path="res://scripts/components/BarrierToggle.gd" id="1_barrier"]
+[ext_resource type="ArrayMesh" uid="uid://bj2xsx8qru211" path="res://assets/models/TestBarrier.obj" id="2_kuo6j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evq1a"]
+size = Vector3(1, 8, 8)
 
 [node name="Barrier" type="StaticBody3D"]
 script = ExtResource("1_barrier")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = ExtResource("2_kuo6j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02659607, 0.041656494, -0.09408569)
+shape = SubResource("BoxShape3D_evq1a")

@@ -1,10 +1,26 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://ck7yaixjvjmrb"]
 
-[ext_resource type="Script" path="res://scripts/components/ButtonInteraction.gd" id="1_button"]
+[ext_resource type="Script" uid="uid://ceqvwpv5d6ohd" path="res://scripts/controllers/button.gd" id="1_ybjr1"]
+[ext_resource type="ArrayMesh" uid="uid://btxo21lh71dh1" path="res://assets/models/TempSpring.obj" id="2_5ktqh"]
 
-[node name="Button" type="Area3D"]
-script = ExtResource("1_button")
+[sub_resource type="BoxShape3D" id="BoxShape3D_boyml"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ka4py"]
+size = Vector3(2, 1, 2)
+
+[node name="Button" type="AnimatableBody3D"]
+script = ExtResource("1_ybjr1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_5ktqh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_boyml")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52323854, 0)
+shape = SubResource("BoxShape3D_ka4py")

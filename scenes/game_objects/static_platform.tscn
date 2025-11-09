@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://beyd4vgb20cfv"]
+[gd_scene load_steps=5 format=3 uid="uid://beyd4vgb20cfv"]
 
-[ext_resource type="ArrayMesh" path="res://assets/models/TestPlatform.obj" id="1_o81e6"]
+[ext_resource type="Texture2D" uid="uid://nhcnhphgv1x3" path="res://assets/textures/TestTexture3.jpg" id="1_mxsp0"]
+[ext_resource type="ArrayMesh" uid="uid://dvftvwmebr1on" path="res://assets/models/TestPlatform.obj" id="1_o81e6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jm10p"]
 size = Vector3(10, 1, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lubu1"]
+albedo_texture = ExtResource("1_mxsp0")
 
 [node name="StaticPlatform" type="StaticBody3D"]
 
@@ -12,4 +16,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_jm10p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_lubu1")
 mesh = ExtResource("1_o81e6")
