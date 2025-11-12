@@ -1,0 +1,39 @@
+extends Control
+
+# MainMenu script
+# Handles main menu UI interactions and scene transitions
+
+func _ready():
+	var play_button = get_node_or_null("CanvasLayer/VBoxContainer/PlayButton")
+	var level_select_button = get_node_or_null("CanvasLayer/VBoxContainer/LevelSelectButton")
+	var options_button = get_node_or_null("CanvasLayer/VBoxContainer/OptionsButton")
+	var quit_button = get_node_or_null("CanvasLayer/VBoxContainer/QuitButton")
+	
+	if play_button:
+		play_button.pressed.connect(_on_play_button_pressed)
+	if level_select_button:
+		level_select_button.pressed.connect(_on_level_select_button_pressed)
+	if options_button:
+		options_button.pressed.connect(_on_options_button_pressed)
+	if quit_button:
+		quit_button.pressed.connect(_on_quit_button_pressed)
+	
+	var main_menu_music = load("res://assets/audio/music/AroQuest_FotS_MM_Theme.mp3")
+	if main_menu_music:
+		var audio_manager = get_node("/root/AudioManager")
+		audio_manager.play_music(main_menu_music)
+
+func _on_play_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/levels/test_world.tscn")
+
+func _on_level_select_button_pressed():
+	# TODO: Open level select menu
+	print("Level select button pressed")
+
+func _on_options_button_pressed():
+	# TODO: Open options menu
+	print("Options button pressed")
+
+func _on_quit_button_pressed():
+	get_tree().quit()
+

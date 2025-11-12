@@ -11,6 +11,13 @@ config_version=5
 [application]
 
 config/name="AroQuest: Fragments of the Sky"
-run/main_scene="uid://b567jf4vr1whv"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/managers/GameManager.gd"
+UIManager="*res://scripts/managers/UIManager.gd"
+AudioManager="*res://scripts/managers/AudioManager.gd"
+SaveLoadSystem="*res://scripts/managers/SaveLoadSystem.gd"
