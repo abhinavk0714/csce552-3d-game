@@ -8,12 +8,12 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_reset"):
-		warp_to_start()
+		restart()
 
-func warp_to_start():
+func restart():
 	# Safely teleport the rigidbody back
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	freeze = true             # temporarily freeze physics simulation
+	freeze = true
 	global_transform = start_transform
 	freeze = false

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckarwkj25fl75"]
+
+[ext_resource type="Script" uid="uid://bnmnit6v14blt" path="res://scripts/controllers/death_barrier.gd" id="1_vtiah"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sku1o"]
+size = Vector3(100, 30, 100)
+
+[node name="DeathBarrier" type="Area3D"]
+script = ExtResource("1_vtiah")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+shape = SubResource("BoxShape3D_sku1o")

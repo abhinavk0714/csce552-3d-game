@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b567jf4vr1whv"]
+[gd_scene load_steps=9 format=3 uid="uid://b567jf4vr1whv"]
 
 [ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="1_dxppu"]
 [ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="2_gy3sr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="4_d4tmt"]
 [ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="4_dsnr4"]
 [ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="4_lf0gk"]
+[ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="8_7c366"]
 
 [node name="test_world" type="Node3D"]
 
@@ -36,3 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5874138, 1.25, 0.5970993)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5188628, 0.8548575, 0, -0.8548575, 0.5188628, 0, 9.366883, 0)
+
+[node name="DeathBarrier" parent="." instance=ExtResource("8_7c366")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -14.142429, 3)
