@@ -2,7 +2,12 @@ extends AnimatableBody3D
 
 @export var min_angle: float = -30.0
 @export var max_angle: float = 30.0
-@export var rotation_speed: float = 60.0
+@export var rotation_speed: float = 120.0
+
+var start_transform: Transform3D # This class's version so I suppose
+func _ready():
+	# Store the starting transform
+	start_transform = global_transform
 
 func _process(delta):
 	var input_dir_z = 0.0
@@ -23,3 +28,11 @@ func _process(delta):
 	if input_dir_z != 0.0:
 		var new_rotation = rotation_degrees.z + rotation_speed * input_dir_z * delta
 		rotation_degrees.z = clamp(new_rotation, min_angle, max_angle)
+		
+	# Reset Logic:
+	if Input.is_action_just_pressed("ui_reset"):
+		reset_state()
+
+func reset_state():
+	print("r")
+	global_transform = start_transform
