@@ -1,11 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhw5cbdm1ce6"]
+[gd_scene load_steps=5 format=3 uid="uid://bhw5cbdm1ce6"]
 
-[ext_resource type="Script" path="res://scripts/controllers/biaxial_platform.gd" id="1_2gcsk"]
-[ext_resource type="ArrayMesh" uid="uid://dvftvwmebr1on" path="res://assets/models/TestPlatform.obj" id="2_2uxts"]
-[ext_resource type="Texture2D" uid="uid://bd4o00ony1bnd" path="res://assets/textures/TestTexture.jpg" id="2_df7aj"]
+[ext_resource type="Script" uid="uid://cvas5kuyruk0e" path="res://scripts/controllers/biaxial_platform.gd" id="1_2gcsk"]
+[ext_resource type="ArrayMesh" path="res://assets/models/TestPlatform.obj" id="2_2uxts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v25em"]
-albedo_texture = ExtResource("2_df7aj")
+albedo_color = Color(0.7, 0.8, 0.9, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gcsk"]
 size = Vector3(10, 2, 6)

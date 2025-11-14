@@ -2,15 +2,33 @@ extends Area3D
 
 # ButtonInteraction component
 # Detects ball overlap with buttons
-# Sends signals to linked components (BarrierToggle, BugReveal, Goal activation)
+# Sends signals to linked components (BarrierToggle, Goal activation)
 
 signal button_pressed
+signal button_released
+
+var is_pressed: bool = false
+var overlapping_bodies: Array = []
 
 func _ready():
-	pass
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	monitoring = true
+	monitorable = true
 
 func _on_body_entered(body):
-	pass
+	if body is RigidBody3D:
+		if body not in overlapping_bodies:
+			overlapping_bodies.append(body)
+		
+		if not is_pressed:
+			is_pressed = true
+			button_pressed.emit()
 
 func _on_body_exited(body):
-	pass
+	if body in overlapping_bodies:
+		overlapping_bodies.erase(body)
+	
+	if overlapping_bodies.is_empty() and is_pressed:
+		is_pressed = false
+		button_released.emit()

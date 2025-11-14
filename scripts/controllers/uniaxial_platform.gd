@@ -7,9 +7,9 @@ extends AnimatableBody3D
 func _process(delta):
 	var input_dir = 0.0
 	if Input.is_action_pressed("ui_left"):
-		input_dir -= 1.0
-	if Input.is_action_pressed("ui_right"):
 		input_dir += 1.0
+	if Input.is_action_pressed("ui_right"):
+		input_dir -= 1.0
 
 	if input_dir != 0.0:
 		var new_rotation = rotation_degrees.z + rotation_speed * input_dir * delta

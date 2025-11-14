@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck7yaixjvjmrb"]
+[gd_scene load_steps=6 format=3 uid="uid://ck7yaixjvjmrb"]
 
-[ext_resource type="Script" uid="uid://ceqvwpv5d6ohd" path="res://scripts/controllers/button.gd" id="1_ybjr1"]
+[ext_resource type="Script" uid="uid://cem4y11my213u" path="res://scripts/controllers/button.gd" id="1_ybjr1"]
+[ext_resource type="Script" path="res://scripts/components/ButtonInteraction.gd" id="1_button_interaction"]
 [ext_resource type="ArrayMesh" uid="uid://btxo21lh71dh1" path="res://assets/models/TempSpring.obj" id="2_5ktqh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_boyml"]
@@ -20,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_boyml")
 
 [node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_button_interaction")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52323854, 0)
