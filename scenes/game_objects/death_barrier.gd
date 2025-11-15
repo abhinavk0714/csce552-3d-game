@@ -19,5 +19,5 @@ func _on_body_entered(body):
 	if body is RigidBody3D:
 		print("Body fell:", body.name)
 		body_collided.emit(body)
-		#body.restart()
+		body.restart()
 		#print(get_path())
