@@ -46,8 +46,15 @@ func collect():
 	bug_collected.emit()
 	get_node("/root/GameManager").collect_bug()
 	
+	# Play coin collect sound
+	var audio_manager = get_node("/root/AudioManager")
+	if audio_manager:
+		var coin_sound = load("res://assets/audio/sfx/coin_collect.wav")
+		if coin_sound:
+			audio_manager.play_sfx(coin_sound, global_position)
+	
 	monitoring = false
 	monitorable = false
 	visible = false
 	
-	# TODO: Add particle effect and sound effect
+	# TODO: Add particle effect

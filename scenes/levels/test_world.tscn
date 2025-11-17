@@ -4,11 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="2_gy3sr"]
 [ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="3_1lwx6"]
 [ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="3_a8c4q"]
+[ext_resource type="AudioStream" uid="uid://dy8x80p1py72s" path="res://assets/audio/sfx/roll.wav" id="3_m2j1u"]
 [ext_resource type="PackedScene" uid="uid://cgvwm8uet4hcs" path="res://scenes/game_objects/bug.tscn" id="4_7c366"]
 [ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="4_d4tmt"]
 [ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="4_dsnr4"]
+[ext_resource type="AudioStream" uid="uid://d3xakpjgvfvp7" path="res://assets/audio/sfx/quiet_plonk.wav" id="4_k4tkr"]
 [ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="4_lf0gk"]
 [ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="5_camera"]
+[ext_resource type="AudioStream" uid="uid://bfrmax8vbfg1a" path="res://assets/audio/sfx/loud_plonk.wav" id="5_junah"]
 [ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="10_dubqp"]
 
 [node name="test_world" type="Node3D"]
@@ -19,7 +22,10 @@ script = ExtResource("5_camera")
 target = NodePath("../Ball")
 
 [node name="Ball" parent="." instance=ExtResource("3_1lwx6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.630741, 4, -5.6505127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.929369, 4, -6.5365105)
+roll_sound = ExtResource("3_m2j1u")
+quiet_plonk_sound = ExtResource("4_k4tkr")
+loud_plonk_sound = ExtResource("5_junah")
 
 [node name="BiaxialPlatform" parent="." instance=ExtResource("2_gy3sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)

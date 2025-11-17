@@ -23,6 +23,12 @@ func _on_body_entered(body):
 		
 		if not is_pressed:
 			is_pressed = true
+			# Play button press sound
+			var audio_manager = get_node("/root/AudioManager")
+			if audio_manager:
+				var button_sound = load("res://assets/audio/sfx/button_push.wav")
+				if button_sound:
+					audio_manager.play_sfx(button_sound, global_position)
 			button_pressed.emit()
 
 func _on_body_exited(body):
