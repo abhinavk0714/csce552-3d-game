@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://38yglc2vup1v"]
 
 [ext_resource type="ArrayMesh" uid="uid://b206hjjtm8dir" path="res://assets/models/Ball.obj" id="1_x8fbi"]
+[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scenes/game_objects/ball.gd" id="1_xprjw"]
 [ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scenes/game_objects/gimbal.gd" id="2_0ljj6"]
 [ext_resource type="Script" path="res://scripts/components/BallSoundController.gd" id="3_sound"]
 
@@ -11,6 +12,7 @@ radius = 1.0
 script = ExtResource("3_sound")
 contact_monitor = true
 max_contacts_reported = 10
+script = ExtResource("1_xprjw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_x8fbi")

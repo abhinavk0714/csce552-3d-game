@@ -1,14 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck7yaixjvjmrb"]
 
-[ext_resource type="Script" uid="uid://cem4y11my213u" path="res://scripts/controllers/button.gd" id="1_ybjr1"]
-[ext_resource type="Script" path="res://scripts/components/ButtonInteraction.gd" id="1_button_interaction"]
-[ext_resource type="ArrayMesh" uid="uid://btxo21lh71dh1" path="res://assets/models/TempSpring.obj" id="2_5ktqh"]
+[ext_resource type="Script" uid="uid://dudsx4e1wg4gu" path="res://scripts/components/ButtonInteraction.gd" id="1_button_interaction"]
+[ext_resource type="Script" uid="uid://ceqvwpv5d6ohd" path="res://scripts/controllers/button.gd" id="1_ybjr1"]
+[ext_resource type="ArrayMesh" uid="uid://dbeps842snw6c" path="res://assets/models/FancyButton.obj" id="2_5ktqh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_boyml"]
-size = Vector3(1, 0.5, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lt4ra"]
+height = 0.39100647
+radius = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ka4py"]
-size = Vector3(2, 1, 2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iqtcf"]
+height = 0.5
+radius = 0.75
 
 [node name="Button" type="AnimatableBody3D"]
 script = ExtResource("1_ybjr1")
@@ -17,12 +19,12 @@ script = ExtResource("1_ybjr1")
 mesh = ExtResource("2_5ktqh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-shape = SubResource("BoxShape3D_boyml")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31150055, 0)
+shape = SubResource("CylinderShape3D_lt4ra")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("1_button_interaction")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52323854, 0)
-shape = SubResource("BoxShape3D_ka4py")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58610475, 0)
+shape = SubResource("CylinderShape3D_iqtcf")
