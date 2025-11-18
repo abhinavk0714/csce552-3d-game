@@ -31,8 +31,8 @@ func _process(delta):
 		
 	# Reset Logic:
 	if Input.is_action_just_pressed("ui_reset"):
-		reset_state()
+		restart()
 
-func reset_state():
+func restart():
 	print("r")
 	global_transform = start_transform
