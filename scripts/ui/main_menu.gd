@@ -49,4 +49,3 @@ func _on_options_button_pressed():
 func _on_quit_button_pressed():
 	_play_ui_click()
 	get_tree().quit()
-

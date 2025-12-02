@@ -3,6 +3,7 @@ extends RigidBody3D
 # BallSoundController component
 # Handles rolling sound and collision sounds for the ball
 # Volume of roll sound is based on velocity
+# Also handles ball restart functionality
 
 @export var roll_sound: AudioStream
 @export var quiet_plonk_sound: AudioStream
@@ -19,8 +20,17 @@ var collision_cooldown: float = 0.0
 var min_collision_cooldown: float = 0.3  # Prevent too many collision sounds
 var last_velocity: Vector3 = Vector3.ZERO
 var last_position: Vector3 = Vector3.ZERO
+var start_transform: Transform3D
 
 func _ready():
+	# Store the starting transform
+	start_transform = global_transform
+	
+	# Connect to death barrier if it exists
+	var death_barrier = get_node_or_null("/root/test_world/DeathBarrier")
+	if death_barrier and death_barrier.has_signal("body_collided"):
+		death_barrier.body_collided.connect(restart)
+	
 	# Enable contact monitoring for collision detection
 	contact_monitor = true
 	max_contacts_reported = 10
@@ -72,6 +82,18 @@ func _physics_process(delta):
 	
 	last_velocity = linear_velocity
 	last_position = global_position
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_reset"):
+		restart()
+
+func restart():
+	# Safely teleport the rigidbody back
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	freeze = true
+	global_transform = start_transform
+	freeze = false
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	# Handle collision sounds - only for barriers and platform landings

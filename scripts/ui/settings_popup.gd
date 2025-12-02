@@ -63,4 +63,3 @@ func show_popup():
 		sfx_slider.value = audio_manager.sfx_volume
 		_update_music_label(audio_manager.music_volume)
 		_update_sfx_label(audio_manager.sfx_volume)
-
