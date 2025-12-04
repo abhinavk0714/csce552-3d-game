@@ -4,6 +4,8 @@ extends AnimatableBody3D
 # Applies directional impulse to player ball when contact is detected
 # Can be angled to control launch direction and force
 
+signal spring_activated(body: RigidBody3D)
+
 @export var launch_force: float = 10.0 # This is wonky -> feel free to play around with the exact value
 
 func _ready():
@@ -12,6 +14,7 @@ func _ready():
 func _on_body_entered(body):
 	if body is RigidBody3D:
 		body.apply_central_impulse(Vector3.UP * launch_force)
+		spring_activated.emit(body)  # Emit signal for frog controller
 		
 		# Play spring sound at reduced volume
 		var audio_manager = get_node("/root/AudioManager")

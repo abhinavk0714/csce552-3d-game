@@ -4,7 +4,13 @@ extends Area3D
 # Handles completion conditions and transitions to the next level or win menu
 
 func _ready():
-	pass
+	body_entered.connect(_on_body_entered)
+	monitoring = true
+	monitorable = true
 
 func _on_body_entered(body):
-	pass
+	if body is RigidBody3D:
+		print("Goal reached!")
+		var game_manager = get_node("/root/GameManager")
+		if game_manager:
+			game_manager.complete_level()
