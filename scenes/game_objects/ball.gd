@@ -5,7 +5,10 @@ var start_transform: Transform3D
 func _ready():
 	# Store the starting transform
 	start_transform = global_transform
-	get_node("/root/test_world/DeathBarrier").body_collided.connect(restart)
+	# Find DeathBarrier in the scene (it should be a sibling of the Ball)
+	var death_barrier = get_node_or_null("../DeathBarrier")
+	if death_barrier and death_barrier.has_signal("body_collided"):
+		death_barrier.body_collided.connect(restart)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_reset"):

@@ -16,12 +16,6 @@ script = ExtResource("3_sound")
 
 [node name="Sphere" parent="." instance=ExtResource("1_sphere")]
 
-[node name="Frog" type="Node3D" parent="."]
-script = ExtResource("4_frog_controller")
-
-[node name="Aro-frog-1" parent="Frog" instance=ExtResource("2_frog")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_41u45")
 
@@ -29,3 +23,10 @@ shape = SubResource("SphereShape3D_41u45")
 script = ExtResource("2_0ljj6")
 
 [node name="Camera3D" type="Camera3D" parent="gimbal"]
+
+[node name="Frog" type="Node3D" parent="gimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+script = ExtResource("4_frog_controller")
+
+[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("2_frog")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
