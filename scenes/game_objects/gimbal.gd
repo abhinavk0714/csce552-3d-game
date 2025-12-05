@@ -2,24 +2,29 @@ extends Node3D
 
 @onready var camera: Camera3D = $Camera3D
 @export var follow_offset: Vector3 = Vector3(0, 6, 12)
+@export var follow_smoothness: float = 10.0
 
 var ball: RigidBody3D
 
 func _ready():
-	# Get the parent Ball (RigidBody3D)
-	ball = get_parent() as RigidBody3D
+	# Find the Ball node (sibling in the level)
+	ball = get_node_or_null("../Ball") as RigidBody3D
 	if not ball:
-		push_error("Gimbal: Parent must be a RigidBody3D (Ball)")
+		# Try alternative path
+		ball = get_tree().get_first_node_in_group("player") as RigidBody3D
+	if not ball:
+		push_error("Gimbal: Could not find Ball node")
 
-func _process(delta):
+func _physics_process(delta):
 	if not ball:
 		return
 	
-	# Follow the ball's position but don't inherit its rotation
-	# Set global position to ball's position, but keep rotation at identity
-	global_position = ball.global_position
-	global_rotation = Vector3.ZERO  # No rotation - always upright
+	# Smoothly follow the ball's position without inheriting rotation
+	var target_position = ball.global_position
+	var lerp_factor = clamp(follow_smoothness * delta, 0.0, 1.0)
+	global_position = global_position.lerp(target_position, lerp_factor)
+	global_rotation = Vector3.ZERO  # Always upright, don't rotate with ball
 	
-	# Keep camera positioned relative to the pivot
+	# Position camera relative to gimbal
 	camera.global_position = global_position + follow_offset
 	camera.look_at(global_position, Vector3.UP)

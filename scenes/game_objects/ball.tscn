@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://38yglc2vup1v"]
+[gd_scene load_steps=5 format=3 uid="uid://38yglc2vup1v"]
 
 [ext_resource type="PackedScene" uid="uid://i5uwejhsnutg" path="res://assets/models/Aro-sphere-1.glb" id="1_sphere"]
-[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scenes/game_objects/gimbal.gd" id="2_0ljj6"]
-[ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="2_frog"]
 [ext_resource type="Script" uid="uid://cqut4id75f5oo" path="res://scripts/components/BallSoundController.gd" id="3_sound"]
-[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="4_frog_controller"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
 radius = 1.0
@@ -18,15 +15,3 @@ script = ExtResource("3_sound")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_41u45")
-
-[node name="gimbal" type="Node3D" parent="."]
-script = ExtResource("2_0ljj6")
-
-[node name="Camera3D" type="Camera3D" parent="gimbal"]
-
-[node name="Frog" type="Node3D" parent="gimbal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-script = ExtResource("4_frog_controller")
-
-[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("2_frog")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
