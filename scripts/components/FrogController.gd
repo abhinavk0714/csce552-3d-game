@@ -16,10 +16,10 @@ var backflip_timer: float = 0.0
 var backflip_duration: float = 1.0  # How long to play backflip animation
 
 func _ready():
-	# Get the parent RigidBody3D (the Ball) - need to go up two levels (Frog -> gimbal -> Ball)
+	# Get the Ball (sibling of gimbal, which is parent of Frog)
 	var gimbal = get_parent()
 	if gimbal:
-		parent_rigidbody = gimbal.get_parent() as RigidBody3D
+		parent_rigidbody = gimbal.get_node_or_null("../Ball") as RigidBody3D
 	
 	if not parent_rigidbody:
 		push_error("FrogController: Could not find parent RigidBody3D (Ball)")
