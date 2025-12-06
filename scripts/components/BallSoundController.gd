@@ -152,4 +152,3 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 			# Play with greatly reduced volume
 			audio_manager.play_sfx(sound_to_play, global_position, plonk_volume)
 			collision_cooldown = min_collision_cooldown
-

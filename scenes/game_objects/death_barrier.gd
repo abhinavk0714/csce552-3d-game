@@ -22,4 +22,3 @@ func _on_body_entered(body):
 		body_collided.emit(body)
 		body.restart()
 		#print(get_path())
-
