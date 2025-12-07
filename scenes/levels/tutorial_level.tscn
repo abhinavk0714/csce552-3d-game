@@ -4,20 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="2_uniaxial"]
 [ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="3_biaxial"]
 [ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="4_ball"]
-[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scenes/game_objects/ball.gd" id="4_ball_script"]
+[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scripts/controllers/ball.gd" id="4_ball_script"]
 [ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="5_button"]
 [ext_resource type="PackedScene" uid="uid://cgvwm8uet4hcs" path="res://scenes/game_objects/bug.tscn" id="6_bug"]
 [ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="7_spring"]
 [ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="8_barrier"]
-[ext_resource type="PackedScene" path="res://scenes/game_objects/death_barrier.tscn" id="9_death"]
+[ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="9_death"]
 [ext_resource type="PackedScene" path="res://scenes/game_objects/goal_button.tscn" id="10_goal"]
 [ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="11_camera"]
-[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scenes/game_objects/gimbal.gd" id="12_gimbal"]
+[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scripts/controllers/gimbal.gd" id="12_gimbal"]
 [ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="13_frog"]
-[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="14_frog_controller"]
-[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="15_i8m3h"]
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="14_7lhta"]
+[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="14_frog_controller"]
 [ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="15_c2hjr"]
+[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="15_i8m3h"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="17_m2g2s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2iuaq"]
@@ -51,11 +51,10 @@ fog_enabled = true
 fog_light_color = Color(0.26, 0.41, 0.58, 1)
 fog_aerial_perspective = 1.0
 
-[node name="TutorialLevel" type="Node3D"]
+[node name="Level 3" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, 7.713152, 7.0328975, -1.1134114)
-current = false
 script = ExtResource("11_camera")
 target = NodePath("../Ball")
 
