@@ -33,7 +33,7 @@ func _play_ui_click():
 
 func _on_play_button_pressed():
 	_play_ui_click()
-	get_tree().change_scene_to_file("res://scenes/levels/level_3.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/level_4.tscn")
 
 func _on_level_select_button_pressed():
 	_play_ui_click()
