@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckarwkj25fl75"]
 
-[ext_resource type="Script" uid="uid://bnmnit6v14blt" path="res://scenes/game_objects/death_barrier.gd" id="1_vtiah"]
+[ext_resource type="Script" uid="uid://bnmnit6v14blt" path="res://scripts/controllers/death_barrier.gd" id="1_vtiah"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sku1o"]
-size = Vector3(50, 30, 50)
+size = Vector3(500, 30, 500)
 
 [node name="DeathBarrier" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.752724, 0)
