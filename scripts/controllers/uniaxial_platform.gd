@@ -10,7 +10,7 @@ func _ready():
 	# Store the starting transform
 	start_transform = global_transform
 
-func _process(delta):
+func _physics_process(delta):
 	var input_dir = 0.0
 	if Input.is_action_pressed("ui_left"):
 		input_dir += 1.0

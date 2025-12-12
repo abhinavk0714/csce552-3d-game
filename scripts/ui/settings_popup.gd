@@ -12,6 +12,9 @@ extends Panel
 var audio_manager: Node
 
 func _ready():
+	# Set process mode to always so it works when paused
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	audio_manager = get_node("/root/AudioManager")
 	
 	# Initialize sliders to current volume (100% = 1.0)
@@ -25,6 +28,14 @@ func _ready():
 	music_slider.value_changed.connect(_on_music_slider_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_changed)
 	close_button.pressed.connect(_on_close_button_pressed)
+	
+	# Set buttons and sliders to always process
+	if close_button:
+		close_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	if music_slider:
+		music_slider.process_mode = Node.PROCESS_MODE_ALWAYS
+	if sfx_slider:
+		sfx_slider.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# Hide by default
 	visible = false

@@ -139,14 +139,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "PLAY"
 
-[node name="LevelSelectButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
-text = "LEVEL SELECT"
+text = "HOW TO PLAY"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
@@ -167,6 +167,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "QUIT GAME"
 
 [node name="SettingsPopup" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -278,6 +279,94 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CloseButton" type="Button" parent="CanvasLayer/SettingsPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "CLOSE"
+
+[node name="HowToPlayPopup" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HowToPlayPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="InstructionsScroll" type="ScrollContainer" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InstructionsText" type="RichTextLabel" parent="CanvasLayer/HowToPlayPopup/VBoxContainer/InstructionsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]OBJECTIVE[/b]
+Roll the ball to the green goal button at the end of each level to progress!
+
+[b]CONTROLS[/b]
+• [b]Arrow Keys[/b] or [b]WASD[/b]: Move platforms to guide the ball
+• [b]R[/b]: Reset the current level
+• [b]P[/b]: Pause/Unpause the game 
+
+[b]GAMEPLAY[/b]
+• Use moving platforms to navigate the ball through obstacles
+• Collect coins along the way for points
+• Avoid falling off the platforms or hitting barriers
+• Press buttons to toggle barriers and unlock paths
+• Use springs to launch the ball to higher platforms
+
+[b]PLATFORM TYPES[/b]
+• [b]Static Platforms[/b]: Don't move - use them as stable ground
+• [b]Uniaxial Platforms[/b]: Move left and right
+• [b]Biaxial Platforms[/b]: Move in all four directions (left, right, forward, back)
+
+Good luck and have fun!"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 0

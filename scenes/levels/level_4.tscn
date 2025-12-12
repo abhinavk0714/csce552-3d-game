@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bst6f8fhyvccw"]
+[gd_scene load_steps=25 format=3 uid="uid://bst6f8fhyvccw"]
 
 [ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="1_xt2o7"]
 [ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="2_beuva"]
@@ -19,6 +19,9 @@
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="17_6b6qc"]
 [ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="18_4aa1a"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="19_jky1q"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="20_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="21_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/level_complete_popup.tscn" id="22_complete"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2iuaq"]
 shader = ExtResource("16_4luak")
@@ -57,7 +60,7 @@ fog_aerial_perspective = 1.0
 transform = Transform3D(1, 0, 0, 0, 0.5188628, 0.8548575, 0, -0.8548575, 0.5188628, 0, 9.366883, 8.182854)
 
 [node name="DeathBarrier" parent="." instance=ExtResource("7_0n65g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -30, 0)
 
 [node name="StartUniaxial" parent="." instance=ExtResource("8_uyomx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
@@ -188,6 +191,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -12)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c2hjr")
+
+[node name="PauseMenu" parent="." instance=ExtResource("20_pause")]
+
+[node name="HUD" parent="." instance=ExtResource("21_hud")]
+
+[node name="LevelCompletePopup" parent="." instance=ExtResource("22_complete")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, 0, 37.69288, -37.5)
