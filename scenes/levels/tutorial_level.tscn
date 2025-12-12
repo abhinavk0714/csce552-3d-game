@@ -1,0 +1,115 @@
+[gd_scene load_steps=23 format=3 uid="uid://dsehw8cfa462w"]
+
+[ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="1_static"]
+[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="2_uniaxial"]
+[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="3_biaxial"]
+[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="4_ball"]
+[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scripts/controllers/ball.gd" id="4_ball_script"]
+[ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="5_button"]
+[ext_resource type="PackedScene" uid="uid://cgvwm8uet4hcs" path="res://scenes/game_objects/bug.tscn" id="6_bug"]
+[ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="7_spring"]
+[ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="8_barrier"]
+[ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="9_death"]
+[ext_resource type="PackedScene" path="res://scenes/game_objects/goal_button.tscn" id="10_goal"]
+[ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="11_camera"]
+[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scripts/controllers/gimbal.gd" id="12_gimbal"]
+[ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="13_frog"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="14_7lhta"]
+[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="14_frog_controller"]
+[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="15_c2hjr"]
+[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="15_i8m3h"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="17_m2g2s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2iuaq"]
+shader = ExtResource("15_i8m3h")
+shader_parameter/worlnoise = ExtResource("17_m2g2s")
+shader_parameter/perlworlnoise = ExtResource("14_7lhta")
+shader_parameter/weathermap = ExtResource("15_c2hjr")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 1.0
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.20000000624012
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
+shader_parameter/turbidity = 10.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/exposure = 0.2000000095
+
+[sub_resource type="Sky" id="Sky_7lhta"]
+sky_material = SubResource("ShaderMaterial_2iuaq")
+
+[sub_resource type="Environment" id="Environment_c2hjr"]
+background_mode = 2
+background_color = Color(0.26, 0.41, 0.58, 1)
+sky = SubResource("Sky_7lhta")
+fog_enabled = true
+fog_light_color = Color(0.26, 0.41, 0.58, 1)
+fog_aerial_perspective = 1.0
+
+[node name="Level 1" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, 7.713152, 7.0328975, -1.1134114)
+script = ExtResource("11_camera")
+target = NodePath("../Ball")
+
+[node name="Ball" parent="." instance=ExtResource("4_ball")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070877075, 4.5858827, 0)
+script = ExtResource("4_ball_script")
+
+[node name="gimbal" type="Node3D" parent="."]
+script = ExtResource("12_gimbal")
+
+[node name="Camera3D" type="Camera3D" parent="gimbal"]
+current = true
+
+[node name="Frog" type="Node3D" parent="gimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+script = ExtResource("14_frog_controller")
+
+[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("13_frog")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5188628, 0.8548575, 0, -0.8548575, 0.5188628, 0, 9.366883, 0)
+
+[node name="DeathBarrier" parent="." instance=ExtResource("9_death")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -4.4762797, 0)
+
+[node name="LandingPlatform1" parent="." instance=ExtResource("1_static")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="UniaxialPlatform1" parent="." instance=ExtResource("2_uniaxial")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="Bug1" parent="UniaxialPlatform1" instance=ExtResource("6_bug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="UniaxialPlatform2" parent="." instance=ExtResource("2_uniaxial")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="Spring1" parent="UniaxialPlatform2" instance=ExtResource("7_spring")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ButtonPlatform1" parent="." instance=ExtResource("3_biaxial")]
+
+[node name="Button1" parent="ButtonPlatform1" instance=ExtResource("5_button")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="Barrier1" parent="." instance=ExtResource("8_barrier")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -4)
+linked_button = NodePath("../ButtonPlatform1/Button1")
+
+[node name="GoalPlatform" parent="." instance=ExtResource("3_biaxial")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141, 0, -8)
+
+[node name="GoalButton" parent="GoalPlatform" instance=ExtResource("10_goal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c2hjr")
