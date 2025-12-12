@@ -51,7 +51,7 @@ fog_enabled = true
 fog_light_color = Color(0.26, 0.41, 0.58, 1)
 fog_aerial_perspective = 1.0
 
-[node name="Level 3" type="Node3D"]
+[node name="TutorialLevel" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, 7.713152, 7.0328975, -1.1134114)
