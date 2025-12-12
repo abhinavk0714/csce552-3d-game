@@ -10,9 +10,7 @@ func _ready():
 func _on_body_entered(body):
 	if body is RigidBody3D:
 		print("Body fell:", body.name)
-		#trigger_resets()
-		body.restart()
-		#_reset_in_branch("test_world")
+		Input.action_press("ui_reset")
 	
 		
 func trigger_resets():
