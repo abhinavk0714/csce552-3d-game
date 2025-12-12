@@ -10,53 +10,83 @@ extends CanvasLayer
 @export var main_menu: Control
 
 var timer_label: Label
-var bugs_label: Label
-var lives_label: Label
+var coins_label: Label
 var level_label: Label
+var pause_button: Button
 
 func _ready():
+	# Find HUD in current scene
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var hud_node = current_scene.get_node_or_null("HUD")
+		if hud_node:
+			timer_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/TimerLabel")
+			coins_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/CoinsLabel")
+			level_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/LevelLabel")
+			pause_button = hud_node.get_node_or_null("PauseButton")
+			if pause_button:
+				pause_button.pressed.connect(_on_pause_button_pressed)
+	
+	# Also check if hud export is set (for backwards compatibility)
 	if hud:
-		timer_label = hud.get_node_or_null("TimerLabel")
-		bugs_label = hud.get_node_or_null("BugsLabel")
-		lives_label = hud.get_node_or_null("LivesLabel")
-		level_label = hud.get_node_or_null("LevelLabel")
-	else:
-		timer_label = get_node_or_null("TimerLabel")
-		bugs_label = get_node_or_null("BugsLabel")
-		lives_label = get_node_or_null("LivesLabel")
-		level_label = get_node_or_null("LevelLabel")
+		timer_label = hud.get_node_or_null("InfoPanel/VBoxContainer/TimerLabel")
+		coins_label = hud.get_node_or_null("InfoPanel/VBoxContainer/CoinsLabel")
+		level_label = hud.get_node_or_null("InfoPanel/VBoxContainer/LevelLabel")
+		pause_button = hud.get_node_or_null("PauseButton")
+		if pause_button:
+			pause_button.pressed.connect(_on_pause_button_pressed)
 	
 	var game_manager = get_node("/root/GameManager")
 	game_manager.bug_collected.connect(_on_bug_collected)
 	game_manager.level_complete.connect(_on_level_complete)
 	game_manager.level_failed.connect(_on_level_failed)
+	game_manager.time_expired.connect(_on_time_expired)
 	
-	update_hud()
+	# Connect to scene changed to update HUD references
+	get_tree().scene_changed.connect(_on_scene_changed)
+	_on_scene_changed()
+
+func _on_scene_changed():
+	# Update HUD references when scene changes
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.name != "MainMenu":
+		var hud_node = current_scene.get_node_or_null("HUD")
+		if hud_node:
+			timer_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/TimerLabel")
+			coins_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/CoinsLabel")
+			level_label = hud_node.get_node_or_null("InfoPanel/VBoxContainer/LevelLabel")
+			pause_button = hud_node.get_node_or_null("PauseButton")
+			if pause_button:
+				# Disconnect if already connected, then reconnect
+				if pause_button.pressed.is_connected(_on_pause_button_pressed):
+					pause_button.pressed.disconnect(_on_pause_button_pressed)
+				pause_button.pressed.connect(_on_pause_button_pressed)
+		update_hud()
 
 func _process(_delta):
-	update_timer(get_node("/root/GameManager").timer)
+	var game_manager = get_node("/root/GameManager")
+	update_timer(game_manager.time_remaining)
 
 func update_hud():
 	var game_manager = get_node("/root/GameManager")
-	update_timer(game_manager.timer)
-	update_bugs(game_manager.bugs_collected, game_manager.bugs_total)
-	update_lives(game_manager.lives)
+	update_timer(game_manager.time_remaining)
+	update_coins(game_manager.bugs_collected)
 	update_level(game_manager.current_level)
 
-func update_timer(time: float):
+func update_timer(time_remaining: float):
 	if timer_label:
-		var minutes = int(time) / 60
-		var seconds = int(time) % 60
-		var milliseconds = int((time - int(time)) * 100)
-		timer_label.text = "Time: %02d:%02d.%02d" % [minutes, seconds, milliseconds]
+		var minutes = int(time_remaining) / 60
+		var seconds = int(time_remaining) % 60
+		# Change color to red if less than 1 minute remaining
+		if time_remaining < 60.0:
+			timer_label.modulate = Color(1, 0.3, 0.3, 1)  # Red tint
+		else:
+			timer_label.modulate = Color(1, 1, 1, 1)  # White
+		timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
 
-func update_bugs(collected: int, total: int):
-	if bugs_label:
-		bugs_label.text = "Bugs: %d / %d" % [collected, total]
-
-func update_lives(lives: int):
-	if lives_label:
-		lives_label.text = "Lives: %d" % lives
+func update_coins(collected: int):
+	if coins_label:
+		coins_label.text = "Coins: %d" % collected
 
 func update_level(level: int):
 	if level_label:
@@ -82,7 +112,7 @@ func hide_message():
 
 func _on_bug_collected():
 	var game_manager = get_node("/root/GameManager")
-	update_bugs(game_manager.bugs_collected, game_manager.bugs_total)
+	update_coins(game_manager.bugs_collected)
 
 func _on_level_complete():
 	# TODO: Show level complete message
@@ -91,3 +121,37 @@ func _on_level_complete():
 func _on_level_failed():
 	# TODO: Show game over message
 	pass
+
+func _on_time_expired():
+	# Time expired - will be reset to tutorial by GameManager
+	pass
+
+func _on_pause_button_pressed():
+	# Find pause menu in current scene and toggle it
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var pause_menu = current_scene.get_node_or_null("PauseMenu")
+		if pause_menu and pause_menu.has_method("toggle_pause"):
+			pause_menu.toggle_pause()
+		elif pause_menu:
+			# Fallback: manually toggle pause
+			if pause_menu.visible:
+				# Unpause
+				pause_menu.visible = false
+				var background = pause_menu.get_node_or_null("Background")
+				var menu_panel = pause_menu.get_node_or_null("CanvasLayer/MenuPanel")
+				if background:
+					background.visible = false
+				if menu_panel:
+					menu_panel.visible = false
+				get_tree().paused = false
+			else:
+				# Pause
+				pause_menu.visible = true
+				var background = pause_menu.get_node_or_null("Background")
+				var menu_panel = pause_menu.get_node_or_null("CanvasLayer/MenuPanel")
+				if background:
+					background.visible = true
+				if menu_panel:
+					menu_panel.visible = true
+				get_tree().paused = true
