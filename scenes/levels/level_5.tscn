@@ -1,30 +1,30 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgpmgvkot0faw"]
+[gd_scene load_steps=23 format=3 uid="uid://suo7i6s8plw"]
 
-[ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="1_sfnul"]
-[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="2_fea5r"]
-[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scripts/controllers/ball.gd" id="3_vm1kt"]
-[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scripts/controllers/gimbal.gd" id="4_wnnhf"]
-[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="5_ahsud"]
-[ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="6_iu1q5"]
-[ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="7_orjhg"]
-[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="8_3j2bn"]
-[ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="9_lolfx"]
-[ext_resource type="PackedScene" uid="uid://cgvwm8uet4hcs" path="res://scenes/game_objects/bug.tscn" id="10_004to"]
-[ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="11_e0v1o"]
-[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="12_idth2"]
-[ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="13_gg75w"]
-[ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="14_n1pyt"]
-[ext_resource type="PackedScene" path="res://scenes/game_objects/goal_button.tscn" id="15_t4lb3"]
-[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="16_ninaw"]
-[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="17_2vq5a"]
-[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="18_ieqpx"]
-[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="19_ips30"]
+[ext_resource type="Script" uid="uid://575rw0p5emj1" path="res://scripts/controllers/CameraFollow.gd" id="1_vmg1d"]
+[ext_resource type="PackedScene" uid="uid://38yglc2vup1v" path="res://scenes/game_objects/ball.tscn" id="2_1nwmf"]
+[ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scripts/controllers/ball.gd" id="3_5f5xw"]
+[ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scripts/controllers/gimbal.gd" id="4_o3ttr"]
+[ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="5_kdsi4"]
+[ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="6_kva3v"]
+[ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="7_jql0x"]
+[ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="8_do6pa"]
+[ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="9_n8qcm"]
+[ext_resource type="PackedScene" uid="uid://cgvwm8uet4hcs" path="res://scenes/game_objects/bug.tscn" id="10_aey3y"]
+[ext_resource type="PackedScene" uid="uid://d2rxu3qyjw74x" path="res://scenes/game_objects/spring.tscn" id="11_k0dme"]
+[ext_resource type="PackedScene" uid="uid://bhw5cbdm1ce6" path="res://scenes/game_objects/biaxial_platform.tscn" id="12_o5em7"]
+[ext_resource type="PackedScene" uid="uid://ck7yaixjvjmrb" path="res://scenes/game_objects/button.tscn" id="13_22mqa"]
+[ext_resource type="PackedScene" uid="uid://cgyphep1ib6pb" path="res://scenes/game_objects/barrier.tscn" id="14_6c6bd"]
+[ext_resource type="PackedScene" path="res://scenes/game_objects/goal_button.tscn" id="15_2qmps"]
+[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="16_gtyp3"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="17_n7m6w"]
+[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="18_ju8vr"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="19_tio2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2iuaq"]
-shader = ExtResource("16_ninaw")
-shader_parameter/worlnoise = ExtResource("19_ips30")
-shader_parameter/perlworlnoise = ExtResource("17_2vq5a")
-shader_parameter/weathermap = ExtResource("18_ieqpx")
+shader = ExtResource("16_gtyp3")
+shader_parameter/worlnoise = ExtResource("19_tio2m")
+shader_parameter/perlworlnoise = ExtResource("17_n7m6w")
+shader_parameter/weathermap = ExtResource("18_ju8vr")
 shader_parameter/wind_direction = Vector2(1, 0)
 shader_parameter/wind_speed = 1.0
 shader_parameter/_density = 0.05
@@ -51,270 +51,184 @@ fog_enabled = true
 fog_light_color = Color(0.26, 0.41, 0.58, 1)
 fog_aerial_perspective = 1.0
 
-[node name="Level 5" type="Node3D"]
+[node name="Level 3" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7815858, 0.6237978, 0, -0.6237978, 0.7815858, 7.713152, 7.0328975, -1.1134114)
-script = ExtResource("1_sfnul")
+script = ExtResource("1_vmg1d")
 target = NodePath("../Ball")
 
-[node name="Ball" parent="." instance=ExtResource("2_fea5r")]
+[node name="Ball" parent="." instance=ExtResource("2_1nwmf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070877075, 4.5858827, 0)
-script = ExtResource("3_vm1kt")
+script = ExtResource("3_5f5xw")
 
 [node name="gimbal" type="Node3D" parent="."]
-script = ExtResource("4_wnnhf")
+script = ExtResource("4_o3ttr")
 
 [node name="Camera3D" type="Camera3D" parent="gimbal"]
 current = true
 
 [node name="Frog" type="Node3D" parent="gimbal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-script = ExtResource("5_ahsud")
+script = ExtResource("5_kdsi4")
 
-[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("6_iu1q5")]
+[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("6_kva3v")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5188628, 0.8548575, 0, -0.8548575, 0.5188628, 0, 9.366883, 0)
 
-[node name="DeathBarrier" parent="." instance=ExtResource("7_orjhg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.079, 0)
+[node name="DeathBarrier" parent="." instance=ExtResource("7_jql0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -17.099142, 0)
 
-[node name="StartUniaxial" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -5, 0)
+[node name="StartUniaxial" parent="." instance=ExtResource("8_do6pa")]
 
-[node name="StartUniaxial2" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, -25, -2, 0)
-
-[node name="Button3" parent="StartUniaxial2" instance=ExtResource("13_gg75w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="UniaxialPlatform1" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -5, 0)
-
-[node name="UniaxialPlatform4" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -12.9478, 6.799143)
-
-[node name="UniaxialPlatform6" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -21.4478, 21.799143)
-
-[node name="Bug2" parent="UniaxialPlatform6" instance=ExtResource("10_004to")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="UniaxialPlatform7" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -21.4478, 21.799143)
-
-[node name="Bug2" parent="UniaxialPlatform7" instance=ExtResource("10_004to")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="UniaxialPlatform5" parent="." instance=ExtResource("8_3j2bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -12.9478, 6.799143)
-
-[node name="LandingPlatform2" parent="." instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -5)
-
-[node name="LandingPlatform8" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-
-[node name="LandingPlatform9" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -5)
-
-[node name="Bug2" parent="LandingPlatform2/LandingPlatform9" instance=ExtResource("10_004to")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="LandingPlatform10" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
-
-[node name="GoalButton" parent="LandingPlatform2/LandingPlatform10" instance=ExtResource("15_t4lb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform11" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -5)
-
-[node name="Button1" parent="LandingPlatform2/LandingPlatform11" instance=ExtResource("13_gg75w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform21" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 10, 3, -4)
-
-[node name="LandingPlatform22" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 3, -4)
-
-[node name="LandingPlatform23" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10, 3, -4)
-
-[node name="LandingPlatform24" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 10, -20, 40.18184)
-
-[node name="LandingPlatform25" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -20, 40.18184)
-
-[node name="LandingPlatform26" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10, -20, 40.18184)
-
-[node name="LandingPlatform18" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14, -5)
-
-[node name="Bug2" parent="LandingPlatform2/LandingPlatform18" instance=ExtResource("10_004to")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="LandingPlatform19" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, -5)
-
-[node name="LandingPlatform20" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 14, -5)
-
-[node name="LandingPlatform12" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 15, 10, -5)
-
-[node name="LandingPlatform15" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -4, 10, -5)
-
-[node name="LandingPlatform13" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -15, 10, -5)
-
-[node name="LandingPlatform14" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -6, 10, -5)
-
-[node name="LandingPlatform16" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 6, 10, -5)
-
-[node name="LandingPlatform17" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 4, 10, -5)
-
-[node name="LandingPlatform7" parent="LandingPlatform2" instance=ExtResource("9_lolfx")]
+[node name="LandingPlatform1" parent="." instance=ExtResource("9_n8qcm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="Bug2" parent="LandingPlatform2/LandingPlatform7" instance=ExtResource("10_004to")]
+[node name="UniaxialPlatform1" parent="." instance=ExtResource("8_do6pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="Bug1" parent="UniaxialPlatform1" instance=ExtResource("10_aey3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="BiaxialPlatform4" parent="." instance=ExtResource("12_idth2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -27.984674, 32.133823)
-
-[node name="BiaxialPlatform3" parent="." instance=ExtResource("12_idth2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -27.984674, 32.133823)
-
-[node name="BiaxialPlatform2" parent="." instance=ExtResource("12_idth2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27.984674, 32.133823)
-
-[node name="Button2" parent="BiaxialPlatform2" instance=ExtResource("13_gg75w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="BiaxialPlatform5" parent="." instance=ExtResource("12_idth2")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, -17.580746, 15.21965)
-
-[node name="LandingPlatform7" parent="." instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, -11.365, 0.1)
-
-[node name="LandingPlatform8" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
+[node name="LandingPlatform2" parent="." instance=ExtResource("9_n8qcm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="LandingPlatform7" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, 10, 0, 0)
+[node name="SpringPlatform1" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(0.9396926, -0.17101006, -0.29619807, 0, 0.8660254, -0.49999997, 0.34202012, 0.4698463, 0.8137976, 20, -10, -16)
 
-[node name="LandingPlatform10" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 4.9999995)
-
-[node name="LandingPlatform11" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 4.9999995)
-
-[node name="LandingPlatform9" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 5)
-
-[node name="LandingPlatform12" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 10)
-
-[node name="LandingPlatform13" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 10)
-
-[node name="LandingPlatform15" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 15)
-
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform15" instance=ExtResource("11_e0v1o")]
+[node name="Spring1" parent="SpringPlatform1" instance=ExtResource("11_k0dme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="LandingPlatform16" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 15)
+[node name="HighPlatform1" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -5, -25)
 
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform16" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform18" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 20)
-
-[node name="LandingPlatform19" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 20)
-
-[node name="LandingPlatform21" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 25)
-
-[node name="LandingPlatform22" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 25)
-
-[node name="LandingPlatform23" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 25)
-
-[node name="LandingPlatform24" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 5.9604645e-08, 1, -10, -9.536743e-07, 30)
-
-[node name="LandingPlatform25" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.1920929e-07, 0, 1.1920929e-07, 1, 10, -9.536743e-07, 30)
-
-[node name="LandingPlatform26" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 30)
-
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform26" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform27" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660253, 0, -0.8660253, 0.5, -10, 6.075965, 40.52388)
-
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform27" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform28" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660253, 0, -0.8660253, 0.5, 10, 6.075965, 40.52388)
-
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform28" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="LandingPlatform29" parent="LandingPlatform7" instance=ExtResource("9_lolfx")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660253, 0, -0.8660253, 0.5, 0, 6.075965, 40.52388)
-
-[node name="Spring1" parent="LandingPlatform7/LandingPlatform29" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="Spring1" parent="LandingPlatform7" instance=ExtResource("11_e0v1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="HighPlatform1" parent="." instance=ExtResource("9_lolfx")]
-transform = Transform3D(0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, 0, 0, 1, 25, -2, 0)
-
-[node name="Bug2" parent="HighPlatform1" instance=ExtResource("10_004to")]
+[node name="Bug2" parent="HighPlatform1" instance=ExtResource("10_aey3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Barrier1" parent="." instance=ExtResource("14_n1pyt")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, -8)
-linked_button = NodePath("../LandingPlatform2/LandingPlatform11/Button1")
-
-[node name="Barrier4" parent="." instance=ExtResource("14_n1pyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-linked_button = NodePath("../LandingPlatform2/LandingPlatform11/Button1")
-
-[node name="Barrier2" parent="." instance=ExtResource("14_n1pyt")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0, -8)
-linked_button = NodePath("../BiaxialPlatform2/Button2")
-
-[node name="Barrier5" parent="." instance=ExtResource("14_n1pyt")]
+[node name="UniaxialPlatform2" parent="." instance=ExtResource("8_do6pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
-linked_button = NodePath("../BiaxialPlatform2/Button2")
 
-[node name="BiaxialPlatform1" parent="." instance=ExtResource("12_idth2")]
+[node name="LandingPlatform3" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 8)
 
-[node name="Barrier3" parent="." instance=ExtResource("14_n1pyt")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -8)
-linked_button = NodePath("../StartUniaxial2/Button3")
+[node name="LandingPlatform8" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -8)
+
+[node name="LandingPlatform11" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, -40, -7.5, 8)
+
+[node name="Bug2" parent="LandingPlatform11" instance=ExtResource("10_aey3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ButtonPlatform1" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 16)
+
+[node name="Button1" parent="ButtonPlatform1" instance=ExtResource("13_22mqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Bug1" parent="ButtonPlatform1" instance=ExtResource("10_aey3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="LandingPlatform14" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, 8)
+
+[node name="ButtonPlatform2" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, 16)
+
+[node name="Bug1" parent="." instance=ExtResource("10_aey3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -6, -10)
+
+[node name="Barrier1" parent="." instance=ExtResource("14_6c6bd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 2, -20.5)
+linked_button = NodePath("../ButtonPlatform1/Button1")
+
+[node name="UniaxialPlatform3" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -16)
+
+[node name="Button2" parent="UniaxialPlatform3" instance=ExtResource("13_22mqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LandingPlatform17" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -10, -8)
+
+[node name="UniaxialPlatform6" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -10, -16)
+
+[node name="Barrier2" parent="." instance=ExtResource("14_6c6bd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 2, 21)
+linked_button = NodePath("../UniaxialPlatform3/Button2")
+
+[node name="BiaxialPlatform1" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="BiaxialPlatform4" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 26)
+
+[node name="BiaxialPlatform3" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="BiaxialPlatform5" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, -10, 0)
+
+[node name="LandingPlatform6" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="LandingPlatform15" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -3, 16)
+
+[node name="LandingPlatform16" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.004, -6, 16)
+
+[node name="LandingPlatform7" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="StartUniaxial2" parent="." instance=ExtResource("8_do6pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -10, 0)
+
+[node name="LandingPlatform12" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -10, 0)
+
+[node name="UniaxialPlatform5" parent="." instance=ExtResource("8_do6pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -10, 0)
+
+[node name="LandingPlatform13" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="LandingPlatform9" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -16)
+
+[node name="UniaxialPlatform4" parent="." instance=ExtResource("8_do6pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -16)
+
+[node name="Bug2" parent="UniaxialPlatform4" instance=ExtResource("10_aey3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="LandingPlatform10" parent="." instance=ExtResource("9_n8qcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -16)
+
+[node name="BiaxialPlatform2" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="Button3" parent="BiaxialPlatform2" instance=ExtResource("13_22mqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Bug2" parent="BiaxialPlatform2" instance=ExtResource("10_aey3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="StartUniaxial" parent="BiaxialPlatform2" instance=ExtResource("8_do6pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, 0)
+
+[node name="Barrier3" parent="." instance=ExtResource("14_6c6bd")]
+transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 9, 0, -16)
+linked_button = NodePath("../BiaxialPlatform2/Button3")
+
+[node name="GoalPlatform" parent="." instance=ExtResource("12_o5em7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, 0)
+
+[node name="GoalButton" parent="GoalPlatform" instance=ExtResource("15_2qmps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c2hjr")
