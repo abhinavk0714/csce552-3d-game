@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbwa4w7vnnieg"]
+[gd_scene load_steps=21 format=3 uid="uid://cbwa4w7vnnieg"]
 
 [ext_resource type="Script" uid="uid://cmxwifku62wgp" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Script" uid="uid://bccaeu06ncvmq" path="res://scripts/ui/settings_popup.gd" id="2_settings"]
-[ext_resource type="Script" path="res://scripts/ui/menu_3d_background.gd" id="8_menu_3d"]
 [ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="3_clouds"]
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="4_perlnoise"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="5_worlnoise"]
 [ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="6_weather"]
 [ext_resource type="PackedScene" uid="uid://cpg75txj5r7ne" path="res://assets/models/Aro-frog-2.glb" id="7_aro"]
+[ext_resource type="Script" uid="uid://cemec56c6uufp" path="res://scripts/ui/menu_3d_background.gd" id="8_menu_3d"]
 [ext_resource type="PackedScene" uid="uid://i5uwejhsnutg" path="res://assets/models/Aro-sphere-1.glb" id="9_sphere"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_green"]
@@ -436,7 +436,7 @@ text = "[b]OBJECTIVE[/b]
 Help Aro get to the green goal button at the end of each level to progress!
 
 [b]CONTROLS[/b]
-• [b]Arrow Keys[/b] or [b]WASD[/b]: Move platforms to guide the ball
+• [b]Arrow Keys[/b]: Move platforms to guide the ball
 • [b]R[/b]: Reset the current level
 • [b]P[/b]: Pause/Unpause the game 
 
