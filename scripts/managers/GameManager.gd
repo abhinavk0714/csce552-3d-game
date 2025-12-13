@@ -8,8 +8,8 @@ var current_level_index: int = 0
 var bugs_collected: int = 0
 var bugs_total: int = 0
 var timer: float = 0.0
-var time_limit_per_level: float = 300.0  # 5 minutes in seconds (easily adjustable)
-var time_remaining: float = 300.0
+var time_limit_per_level: float = 600.0  # 10 minutes in seconds (easily adjustable)
+var time_remaining: float = 600.0
 var time_expired_handled: bool = false
 
 # Level progression: tutorial -> level_1 -> level_2 -> level_3 -> level_4 -> level_5
@@ -22,11 +22,11 @@ var level_paths: Array[String] = [
 	"res://scenes/levels/level_5.tscn"
 ]
 
-# Computed property for backward compatibility - returns display level number (1-based)
-# Tutorial (index 0) shows as 1, level_1 (index 1) shows as 2, etc.
+# Computed property for backward compatibility - returns display level number
+# Since we skip tutorial, level_1 (index 1) shows as 1, level_2 (index 2) shows as 2, etc.
 var current_level: int:
 	get:
-		return current_level_index + 1
+		return current_level_index
 
 signal level_complete
 signal level_failed
@@ -99,13 +99,13 @@ func reset_level():
 	# TODO: Reset player position and platforms
 
 func reset_to_tutorial():
-	# Reset to tutorial level when time expires
-	current_level_index = 0
+	# Reset to Level 1 when time expires (skip tutorial)
+	current_level_index = 1
 	bugs_collected = 0
 	timer = 0.0
 	time_remaining = time_limit_per_level
 	time_expired_handled = false
-	get_tree().change_scene_to_file(level_paths[0])
+	get_tree().change_scene_to_file(level_paths[1])  # Level 1 instead of tutorial
 
 func load_next_level():
 	current_level_index += 1

@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbwa4w7vnnieg"]
+[gd_scene load_steps=16 format=3 uid="uid://cbwa4w7vnnieg"]
 
 [ext_resource type="Script" uid="uid://cmxwifku62wgp" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Script" uid="uid://bccaeu06ncvmq" path="res://scripts/ui/settings_popup.gd" id="2_settings"]
+[ext_resource type="Script" path="res://scripts/ui/menu_3d_background.gd" id="8_menu_3d"]
+[ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="3_clouds"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="4_perlnoise"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="5_worlnoise"]
+[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://assets/sky/weather.bmp" id="6_weather"]
+[ext_resource type="PackedScene" uid="uid://cpg75txj5r7ne" path="res://assets/models/Aro-frog-2.glb" id="7_aro"]
+[ext_resource type="PackedScene" uid="uid://i5uwejhsnutg" path="res://assets/models/Aro-sphere-1.glb" id="9_sphere"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_green"]
 bg_color = Color(0.29278386, 0.58708274, 0.3145139, 1)
@@ -51,6 +58,37 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_sky"]
+shader = ExtResource("3_clouds")
+shader_parameter/worlnoise = ExtResource("5_worlnoise")
+shader_parameter/perlworlnoise = ExtResource("4_perlnoise")
+shader_parameter/weathermap = ExtResource("6_weather")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 0.5
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.3
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.7, 0.85, 1, 1)
+shader_parameter/turbidity = 8.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/exposure = 0.3
+
+[sub_resource type="Sky" id="Sky_menu"]
+sky_material = SubResource("ShaderMaterial_menu_sky")
+
+[sub_resource type="Environment" id="Environment_menu"]
+background_mode = 2
+background_color = Color(0.5, 0.7, 0.9, 1)
+sky = SubResource("Sky_menu")
+fog_enabled = true
+fog_light_color = Color(0.5, 0.7, 0.9, 1)
+fog_aerial_perspective = 1.0
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -82,6 +120,40 @@ offset_top = -649.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sky")
+
+[node name="Menu3DBackground" type="SubViewportContainer" parent="RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="RightPanel/Menu3DBackground"]
+size = Vector2i(1920, 1080)
+transparent_bg = false
+render_target_update_mode = 2
+
+[node name="Menu3DScene" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
+environment = SubResource("Environment_menu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 5, 0)
+light_color = Color(1, 0.95, 0.9, 1)
+shadow_enabled = true
+
+[node name="BallModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("9_sphere")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="AroModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("7_aro")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 4)
+fov = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -124,44 +196,62 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -547.0
-offset_top = -110.0
+offset_top = -70.0
 offset_right = -234.0
-offset_bottom = 233.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "PLAY"
 
 [node name="HowToPlayButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "HOW TO PLAY"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "OPTIONS"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 80)
+[node name="AboutButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "ABOUT"
+
+[node name="LevelSelectButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 65)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL SELECT"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 65)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "QUIT GAME"
@@ -340,7 +430,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[b]OBJECTIVE[/b]
-Roll the ball to the green goal button at the end of each level to progress!
+Help Aro get to the green goal button at the end of each level to progress!
 
 [b]CONTROLS[/b]
 • [b]Arrow Keys[/b] or [b]WASD[/b]: Move platforms to guide the ball
@@ -367,6 +457,202 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="CloseButton" type="Button" parent="CanvasLayer/HowToPlayPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "CLOSE"
+
+[node name="AboutPopup" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AboutPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "ABOUT"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GameNameLabel" type="Label" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "AROQUEST: FRAGMENTS OF THE SKY
+Made by: Touhou Hollow Legends"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CreditsScroll" type="ScrollContainer" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CreditsText" type="RichTextLabel" parent="CanvasLayer/AboutPopup/VBoxContainer/CreditsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[b]CREDITS[/b]
+
+[b]Lead Developer[/b]
+Ashton Harris
+
+[b]Developer & Audio Asset Creator[/b]
+Abhinav Krishniah
+
+[b]Developer & Visual Asset Creator[/b]
+Marcus Leano"
+
+[node name="Spacer3" type="Control" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/AboutPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "CLOSE"
+
+[node name="LevelSelectPopup" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSelectPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Level1Button" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL 1"
+
+[node name="Level2Button" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL 2"
+
+[node name="Level3Button" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL 3"
+
+[node name="Level4Button" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL 4"
+
+[node name="Level5Button" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "LEVEL 5"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/LevelSelectPopup/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 0

@@ -19,10 +19,8 @@ func _physics_process(delta):
 	if not ball:
 		return
 	
-	# Smoothly follow the ball's position without inheriting rotation
-	var target_position = ball.global_position
-	var lerp_factor = clamp(follow_smoothness * delta, 0.0, 1.0)
-	global_position = global_position.lerp(target_position, lerp_factor)
+	# Directly match ball position - no lerp to prevent phasing
+	global_position = ball.global_position
 	global_rotation = Vector3.ZERO  # Always upright, don't rotate with ball
 	
 	# Position camera relative to gimbal
