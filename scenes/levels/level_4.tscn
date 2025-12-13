@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b4mpx58p0tyly" path="res://scripts/controllers/ball.gd" id="3_05se8"]
 [ext_resource type="Script" uid="uid://d2bjfpe1mojqv" path="res://scripts/controllers/gimbal.gd" id="4_12cdj"]
 [ext_resource type="Script" uid="uid://o7ayx8gdifnp" path="res://scripts/components/FrogController.gd" id="5_r3huh"]
-[ext_resource type="PackedScene" uid="uid://dvrv8swdr117r" path="res://assets/models/Aro-frog-1.glb" id="6_lc5pf"]
+[ext_resource type="PackedScene" uid="uid://cpg75txj5r7ne" path="res://assets/models/Aro-frog-2.glb" id="6_lc5pf"]
 [ext_resource type="PackedScene" uid="uid://ckarwkj25fl75" path="res://scenes/game_objects/death_barrier.tscn" id="7_0n65g"]
 [ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="8_uyomx"]
 [ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="9_io455"]
@@ -218,5 +218,5 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 script = ExtResource("5_r3huh")
 
-[node name="Aro-frog-1" parent="gimbal/Frog" instance=ExtResource("6_lc5pf")]
+[node name="Aro-frog-2" parent="gimbal/Frog" instance=ExtResource("6_lc5pf")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
