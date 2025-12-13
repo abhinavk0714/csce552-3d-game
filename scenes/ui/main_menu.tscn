@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmxwifku62wgp" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Script" uid="uid://bccaeu06ncvmq" path="res://scripts/ui/settings_popup.gd" id="2_settings"]
+[ext_resource type="Script" path="res://scripts/ui/menu_3d_background.gd" id="8_menu_3d"]
 [ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="3_clouds"]
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="4_perlnoise"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="5_worlnoise"]
@@ -135,6 +136,7 @@ size = Vector2i(776, 649)
 render_target_update_mode = 4
 
 [node name="Menu3DScene" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport"]
+script = ExtResource("8_menu_3d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
 environment = SubResource("Environment_menu")
@@ -147,7 +149,9 @@ shadow_enabled = true
 [node name="BallModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("9_sphere")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="AroModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("7_aro")]
+[node name="AroRotator" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
+
+[node name="AroModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene/AroRotator" instance=ExtResource("7_aro")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
