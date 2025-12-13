@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by0lk7llr4e6f"
-path.s3tc="res://.godot/imported/Coin_CoinPaint.png-4b05976f031439d71f2294e81459673c.s3tc.ctex"
+uid="uid://cfgvf5khgb546"
+path.s3tc="res://.godot/imported/Aro-frog-2_aro-texture.png-32791ed1557bc8ce401188d7cbde41ca.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c944f86ab85f9f3eba4770aefe7ce1fd"
+"md5": "b90a09450e5c4fbb29e398e992765133"
 }
 
 [deps]
 
-source_file="res://assets/models/Coin_CoinPaint.png"
-dest_files=["res://.godot/imported/Coin_CoinPaint.png-4b05976f031439d71f2294e81459673c.s3tc.ctex"]
+source_file="res://assets/models/Aro-frog-2_aro-texture.png"
+dest_files=["res://.godot/imported/Aro-frog-2_aro-texture.png-32791ed1557bc8ce401188d7cbde41ca.s3tc.ctex"]
 
 [params]
 
