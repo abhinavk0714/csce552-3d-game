@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmbk552yra7aj"]
+[gd_scene load_steps=26 format=3 uid="uid://cmbk552yra7aj"]
 
 [ext_resource type="PackedScene" uid="uid://beyd4vgb20cfv" path="res://scenes/game_objects/static_platform.tscn" id="1_static"]
 [ext_resource type="PackedScene" uid="uid://i765m3evv58v" path="res://scenes/game_objects/uniaxial_platform.tscn" id="2_uniaxial"]
@@ -20,7 +20,7 @@
 [ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="15_i8m3h"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="17_m2g2s"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="18_pause"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="19_hud"]
+[ext_resource type="PackedScene" uid="uid://c07r6e0ikar4x" path="res://scenes/ui/hud.tscn" id="19_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/level_complete_popup.tscn" id="20_complete"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2iuaq"]
