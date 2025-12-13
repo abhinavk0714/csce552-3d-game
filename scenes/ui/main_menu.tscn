@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbwa4w7vnnieg"]
+[gd_scene load_steps=20 format=3 uid="uid://cbwa4w7vnnieg"]
 
 [ext_resource type="Script" uid="uid://cmxwifku62wgp" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Script" uid="uid://bccaeu06ncvmq" path="res://scripts/ui/settings_popup.gd" id="2_settings"]
@@ -15,6 +15,37 @@ bg_color = Color(0.29278386, 0.58708274, 0.3145139, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky"]
 bg_color = Color(0.5, 0.8, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_sky"]
+shader = ExtResource("3_clouds")
+shader_parameter/worlnoise = ExtResource("5_worlnoise")
+shader_parameter/perlworlnoise = ExtResource("4_perlnoise")
+shader_parameter/weathermap = ExtResource("6_weather")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 0.5
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.3
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.7, 0.85, 1, 1)
+shader_parameter/turbidity = 8.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/exposure = 0.3
+
+[sub_resource type="Sky" id="Sky_menu"]
+sky_material = SubResource("ShaderMaterial_menu_sky")
+
+[sub_resource type="Environment" id="Environment_menu"]
+background_mode = 2
+background_color = Color(0.5, 0.7, 0.9, 1)
+sky = SubResource("Sky_menu")
+fog_enabled = true
+fog_light_color = Color(0.5, 0.7, 0.9, 1)
+fog_aerial_perspective = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title"]
 bg_color = Color(0.2, 0.4, 0.8, 1)
@@ -58,37 +89,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_sky"]
-shader = ExtResource("3_clouds")
-shader_parameter/worlnoise = ExtResource("5_worlnoise")
-shader_parameter/perlworlnoise = ExtResource("4_perlnoise")
-shader_parameter/weathermap = ExtResource("6_weather")
-shader_parameter/wind_direction = Vector2(1, 0)
-shader_parameter/wind_speed = 0.5
-shader_parameter/_density = 0.05
-shader_parameter/cloud_coverage = 0.3
-shader_parameter/_time_offset = 0.0
-shader_parameter/rayleigh = 2.0
-shader_parameter/rayleigh_color = Color(0.5, 0.7, 0.9, 1)
-shader_parameter/mie = 0.005
-shader_parameter/mie_eccentricity = 0.8
-shader_parameter/mie_color = Color(0.7, 0.85, 1, 1)
-shader_parameter/turbidity = 8.0
-shader_parameter/sun_disk_scale = 1.0
-shader_parameter/ground_color = Color(0.5, 0.7, 0.9, 1)
-shader_parameter/exposure = 0.3
-
-[sub_resource type="Sky" id="Sky_menu"]
-sky_material = SubResource("ShaderMaterial_menu_sky")
-
-[sub_resource type="Environment" id="Environment_menu"]
-background_mode = 2
-background_color = Color(0.5, 0.7, 0.9, 1)
-sky = SubResource("Sky_menu")
-fog_enabled = true
-fog_light_color = Color(0.5, 0.7, 0.9, 1)
-fog_aerial_perspective = 1.0
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -131,11 +131,12 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="RightPanel/Menu3DBackground"]
-size = Vector2i(1920, 1080)
-transparent_bg = false
-render_target_update_mode = 2
+handle_input_locally = false
+size = Vector2i(776, 649)
+render_target_update_mode = 4
 
 [node name="Menu3DScene" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport"]
+script = ExtResource("8_menu_3d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
 environment = SubResource("Environment_menu")
@@ -148,7 +149,9 @@ shadow_enabled = true
 [node name="BallModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("9_sphere")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="AroModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene" instance=ExtResource("7_aro")]
+[node name="AroRotator" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
+
+[node name="AroModel" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene/AroRotator" instance=ExtResource("7_aro")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="RightPanel/Menu3DBackground/SubViewport/Menu3DScene"]
@@ -533,7 +536,7 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[b]CREDITS[/b]
 
-[b]Lead Developer[/b]
+[b]Developer & Level Designer[/b]
 Ashton Harris
 
 [b]Developer & Audio Asset Creator[/b]
