@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbwa4w7vnnieg"]
+[gd_scene load_steps=20 format=3 uid="uid://cbwa4w7vnnieg"]
 
 [ext_resource type="Script" uid="uid://cmxwifku62wgp" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 [ext_resource type="Script" uid="uid://bccaeu06ncvmq" path="res://scripts/ui/settings_popup.gd" id="2_settings"]
-[ext_resource type="Script" path="res://scripts/ui/menu_3d_background.gd" id="8_menu_3d"]
 [ext_resource type="Shader" uid="uid://dvseeqtvt0xxr" path="res://assets/sky/clouds.gdshader" id="3_clouds"]
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://assets/sky/perlworlnoise.tga" id="4_perlnoise"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://assets/sky/worlnoise.bmp" id="5_worlnoise"]
@@ -15,6 +14,37 @@ bg_color = Color(0.29278386, 0.58708274, 0.3145139, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky"]
 bg_color = Color(0.5, 0.8, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_sky"]
+shader = ExtResource("3_clouds")
+shader_parameter/worlnoise = ExtResource("5_worlnoise")
+shader_parameter/perlworlnoise = ExtResource("4_perlnoise")
+shader_parameter/weathermap = ExtResource("6_weather")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 0.5
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.3
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.7, 0.85, 1, 1)
+shader_parameter/turbidity = 8.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(0.5, 0.7, 0.9, 1)
+shader_parameter/exposure = 0.3
+
+[sub_resource type="Sky" id="Sky_menu"]
+sky_material = SubResource("ShaderMaterial_menu_sky")
+
+[sub_resource type="Environment" id="Environment_menu"]
+background_mode = 2
+background_color = Color(0.5, 0.7, 0.9, 1)
+sky = SubResource("Sky_menu")
+fog_enabled = true
+fog_light_color = Color(0.5, 0.7, 0.9, 1)
+fog_aerial_perspective = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title"]
 bg_color = Color(0.2, 0.4, 0.8, 1)
@@ -58,37 +88,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_menu_sky"]
-shader = ExtResource("3_clouds")
-shader_parameter/worlnoise = ExtResource("5_worlnoise")
-shader_parameter/perlworlnoise = ExtResource("4_perlnoise")
-shader_parameter/weathermap = ExtResource("6_weather")
-shader_parameter/wind_direction = Vector2(1, 0)
-shader_parameter/wind_speed = 0.5
-shader_parameter/_density = 0.05
-shader_parameter/cloud_coverage = 0.3
-shader_parameter/_time_offset = 0.0
-shader_parameter/rayleigh = 2.0
-shader_parameter/rayleigh_color = Color(0.5, 0.7, 0.9, 1)
-shader_parameter/mie = 0.005
-shader_parameter/mie_eccentricity = 0.8
-shader_parameter/mie_color = Color(0.7, 0.85, 1, 1)
-shader_parameter/turbidity = 8.0
-shader_parameter/sun_disk_scale = 1.0
-shader_parameter/ground_color = Color(0.5, 0.7, 0.9, 1)
-shader_parameter/exposure = 0.3
-
-[sub_resource type="Sky" id="Sky_menu"]
-sky_material = SubResource("ShaderMaterial_menu_sky")
-
-[sub_resource type="Environment" id="Environment_menu"]
-background_mode = 2
-background_color = Color(0.5, 0.7, 0.9, 1)
-sky = SubResource("Sky_menu")
-fog_enabled = true
-fog_light_color = Color(0.5, 0.7, 0.9, 1)
-fog_aerial_perspective = 1.0
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -131,9 +130,9 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="RightPanel/Menu3DBackground"]
-size = Vector2i(1920, 1080)
-transparent_bg = false
-render_target_update_mode = 2
+handle_input_locally = false
+size = Vector2i(776, 649)
+render_target_update_mode = 4
 
 [node name="Menu3DScene" type="Node3D" parent="RightPanel/Menu3DBackground/SubViewport"]
 
@@ -533,7 +532,7 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[b]CREDITS[/b]
 
-[b]Lead Developer[/b]
+[b]Developer & Level Designer[/b]
 Ashton Harris
 
 [b]Developer & Audio Asset Creator[/b]
